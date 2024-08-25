@@ -21,8 +21,8 @@ public class AvgSpeedKm {
         // calculate miles per hour
         double mph = miles / hours;
         // convert mph to kmh
-        double kmh = mph * 1.6;
+        double kph = mph * 1.6;
         // output result to user
-        System.out.println("Your average speed in kilometers is: " + kmh);
+        System.out.println("Your average speed in kilometers is: " + kph);
     }
 }
