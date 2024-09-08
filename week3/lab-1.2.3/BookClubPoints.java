@@ -16,20 +16,23 @@ public class BookClubPoints {
             System.out.println("You have 0 points");
         }
         // if user purchased 1 book, they earned 5 points
-        if(books == 1){
+        else if(books == 1){
             System.out.println("You earned 5 points");
         }
         // if user purchased 2 books, they earned 15 points
-        if(books == 2){
+        else if(books == 2){
             System.out.println("You earned 15 points");
         }
         // if user purchased 3 books, they earned 30 points
-        if(books == 3){
+        else if(books == 3){
             System.out.println("You earned 30 points");
         }
         // if user purchased 4 books or more, they earned 60 points
-        if(books >= 4){
+        else if(books >= 4){
             System.out.println("You earned 60 points");
+        }
+        else {
+            System.out.println("Invalid input");
         }
     }
 }

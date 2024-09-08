@@ -11,13 +11,13 @@ public class RestaurantSelector {
         
         // ask user if anyone is vegetarian and store answer in vegetarian string variable
         System.out.print("Is anyone in your party a vegetarian? (Enter yes or no): ");
-        boolean isVegetarian = input.nextLine().equalsIgnoreCase("yes");
+        boolean isVegetarian = input.nextLine().equals("yes");
         // ask user if anyone is vegan and store answer in vegan string variable
         System.out.print("Is anyone in your party a vegan? (Enter yes or no): ");
-        boolean isVegan = input.nextLine().equalsIgnoreCase("yes");
+        boolean isVegan = input.nextLine().equals("yes");
         // ask user if anyone is gluten-free and store answer in glutenFree string variable
         System.out.print("Is anyone in your party gluten free? (Enter yes or no): ");
-        boolean isGlutenFree = input.nextLine().equalsIgnoreCase("yes");
+        boolean isGlutenFree = input.nextLine().equals("yes");
 
         System.out.println("Here are your restaurant choices:");
         
