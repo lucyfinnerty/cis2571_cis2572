@@ -36,7 +36,7 @@ public class CheckPassword {
         while(true){
             // prompt user to create a new password
             System.out.print("A valid password has 8 or more characters, contains only " 
-            + "letters and digits, and only 2 digits.\nPlease enter a new password: ");
+            + "letters and digits, and at least 2 digits.\nPlease enter a new password: ");
             // String variable 'password' is set to user's input
             String password = input.nextLine();
             // isValidPassword method called and takes in 'password' variable
