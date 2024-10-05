@@ -1,4 +1,4 @@
-package week7;
+
 import java.util.Scanner;
 public class DistFromAvg {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class DistFromAvg {
 
             if (num == -9999 && count == 0) {
                 System.out.println("Must input at least one number (maximum is five). Try again:");
-                continue; // Ask for input again
+                continue; // ask for input again
             }
             if (num == -9999) {
                 break;
@@ -26,11 +26,14 @@ public class DistFromAvg {
         if (count > 0) {
             double average = sum / count;
 
+            System.out.print("Value        ");
+            System.out.println("Distance from Average");
             // display each entered value and its distance from the average
-            System.out.printf("%-10s %-20s\n", "Value", "Distance from Average");
             for (int i = 0; i < count; i++) {
                 double distance = Math.abs(arr[i] - average);
-                System.out.printf("%-10.2f %-20.2f\n", arr[i], distance);
+                System.out.print(arr[i]);
+                System.out.print("          "); // add spaces for alignment
+                System.out.println(distance);
             }
         }
     }
