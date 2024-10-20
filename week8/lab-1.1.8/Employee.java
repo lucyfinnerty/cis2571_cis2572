@@ -4,10 +4,10 @@
 // as well as accessor and mutator methods to retrieve Employee details or set them to something new.
 public class Employee {
     
-    String name; // holds employee's name
-    int idNumber; // employee's id number
-    String department; // the department employee works in
-    String position; // employee's work position within department
+    private String name; // holds employee's name
+    private int idNumber; // employee's id number
+    private String department; // the department employee works in
+    private String position; // employee's work position within department
 
     // constructor with 4 parameters - name, id number, department, position
     public Employee(String name, int idNumber, String department, String position) {

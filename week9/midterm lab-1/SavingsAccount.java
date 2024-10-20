@@ -3,7 +3,7 @@
 // Purpose: This class allows for the creation of a saving account where a starting balance must be provided.
 // It has an accessor and mutator method, as well as a withdraw, deposit, and monthly interest capability.
 public class SavingsAccount {
-     double balance; // total amount of money in savings account
+     private double balance; // total amount of money in savings account
     /*
      * constructor with one parameter - starting balance
      */
