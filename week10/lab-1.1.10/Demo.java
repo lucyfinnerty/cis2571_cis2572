@@ -1,5 +1,5 @@
 import javax.swing.JOptionPane;
-public class CarpetCalculatorDemo {
+public class Demo {
     public static void main(String[] args) {
         String lengthInput = JOptionPane.showInputDialog("Enter the length of the room:");
         int length = Integer.parseInt(lengthInput);
