@@ -1,3 +1,8 @@
+// Name: Lucy Finnerty
+// Date: 10/23/24
+// Purpose: This demo of RoomDimesion and RoomCarpet is showcased using JOption Pane.
+// The application will ask for the user to input room dimensions and cost of carpet
+// per sq ft to recieve the total cost to carpet the room.
 import javax.swing.JOptionPane;
 public class Demo {
     public static void main(String[] args) {
