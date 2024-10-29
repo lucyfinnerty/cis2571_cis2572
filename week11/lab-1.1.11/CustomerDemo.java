@@ -1,4 +1,8 @@
-
+// Name: Lucy Finnerty
+// Date: 10/28/24
+// Purpose: This class demos the Customer class which extends the Person class.
+// I used 2 of the 3 Customer constructors to demonstrate inputting arguments
+// and also using the mutator methods. Then printing out their info using toString().
 public class CustomerDemo {
     public static void main(String[] args) {
         // a new Customer object using the 5-args constructor
