@@ -15,6 +15,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Checkerboard",
+            "request": "launch",
+            "mainClass": "Checkerboard",
+            "vmArgs": "--module-path C:/Users/lucil/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Launch TicTacToeBoard",
             "request": "launch",
             "mainClass": "TicTacToeBoard",
