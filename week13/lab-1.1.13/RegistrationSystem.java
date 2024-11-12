@@ -38,7 +38,7 @@ public class RegistrationSystem extends Application {
         launch(args);
     }
     /**
-     * This program starts the application by creating a VBOx layout with other VBox sections
+     * This method starts the application by creating a VBox layout with other VBox sections
      * for each section of the Conference Registration System. Each Section utilizes radio buttons
      * or check boxes, as well as labels to create the UI.
      * 
