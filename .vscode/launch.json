@@ -26,6 +26,20 @@
             "request": "launch",
             "mainClass": "TicTacToeBoard",
             "vmArgs": "--module-path C:/Users/lucil/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch Reg System",
+            "request": "launch",
+            "mainClass": "RegistrationSystem",
+            "vmArgs": "--module-path C:/Users/lucil/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch PropertyTax",
+            "request": "launch",
+            "mainClass": "PropertyTax",
+            "vmArgs": "--module-path C:/Users/lucil/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
