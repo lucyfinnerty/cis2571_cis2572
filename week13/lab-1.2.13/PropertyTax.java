@@ -4,6 +4,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ public class PropertyTax extends Application{
     private Label propertyTaxLabel; // label to display calculated property tax
 
     public static void main(String[] args) {
-        launch(args);
+        launch(args); // launches start method
     }
     /**
      * This method starts the application by creating a VBox layout with a text field for the
@@ -36,6 +37,7 @@ public class PropertyTax extends Application{
     public void start(Stage primaryStage) {
         // layout setup
         VBox layout = new VBox(10);
+        layout.setPadding(new Insets(10));
 
         // label that tells user to enter actual value of property
         Label instructionLabel = new Label("Enter the actual value of the property:");
