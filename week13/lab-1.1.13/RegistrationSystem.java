@@ -3,14 +3,18 @@
 // Purpose: This application allows the user to fill out a registration form using radio buttons,
 // check boxes, and utilizes an event handler to calculate total fees based on user selection of options.
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
@@ -25,17 +29,14 @@ public class RegistrationSystem extends Application {
     private final double WORKSHOP_NET_SEC_FEE = 395.0;
 
     // UI elements as instance variables
-    private RadioButton generalButton;
-    private RadioButton studentButton;
-    private CheckBox dinnerCheckBox;
-    private CheckBox eCommerceCheckBox;
-    private CheckBox webCheckBox;
-    private CheckBox javaCheckBox;
-    private CheckBox securityCheckBox;
-    private Label resultLabel;
+    private RadioButton generalButton; // if user is not a student, this button may be selected
+    private RadioButton studentButton; // if user is a student, this button may be selected
+    private CheckBox dinnerCheckBox; // check box indicating optional dinner
+    private ListView<String> workshopsListView; // list view that displays all 4 workshops
+    private Label resultLabel; // label next to calculated result
 
     public static void main(String[] args) {
-        launch(args);
+        launch(args); // launches start method
     }
     /**
      * This method starts the application by creating a VBox layout with other VBox sections
@@ -48,6 +49,7 @@ public class RegistrationSystem extends Application {
     public void start(Stage primaryStage) {
         // layout for future buttons/labels
         VBox layout = new VBox(10);
+        layout.setPadding(new Insets(10));
 
         // registration type section
         Label registrationLabel = new Label("Select Registration Type:"); // label for the registration type selection section
@@ -64,14 +66,17 @@ public class RegistrationSystem extends Application {
 
         // workshops section
         Label workshopsLabel = new Label("Select Optional Workshops:"); //label for the worshops selction section
-        eCommerceCheckBox = new CheckBox("Introduction to E-commerce ($295)"); // check box for E-commerce workshop
-        webCheckBox = new CheckBox("The Future of the Web ($295)"); // check box for Future of the Web workshop
-        javaCheckBox = new CheckBox("Advanced Java Programming ($395)"); // check box for Adv Java workshop
-        securityCheckBox = new CheckBox("Network Security ($395)"); // check box for Net Security workshop
-        // adds the workshops label, E-commerce, Future of the Web, Adv Java, and Net Security check boxes to another VBox
-        VBox workshopsBox = new VBox(5, workshopsLabel, eCommerceCheckBox, webCheckBox, javaCheckBox, securityCheckBox);
+        workshopsListView = new ListView<>(FXCollections.observableArrayList( // list view displays all 4 workshops which allows
+                "Introduction to E-commerce ($295)",                          // for more than 1 selection using ctrl + left click on item
+                "The Future of the Web ($295)",
+                "Advanced Java Programming ($395)",
+                "Network Security ($395)"
+        ));
+        // set list view selection mode to MULTIPLE, so more than 1 workshop can be selected
+        workshopsListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        VBox workshopsBox = new VBox(5, workshopsLabel, workshopsListView);
 
-        // calculate Button and result display
+        // calculate Button and display result
         Button calculateButton = new Button("Calculate Total");
         resultLabel = new Label("Total: $0.00");
 
@@ -93,9 +98,10 @@ public class RegistrationSystem extends Application {
         public void handle(ActionEvent event) {
             // final fee
             double total = 0;
-
+            // if user is not a student, fee is $895
             if (generalButton.isSelected()) {
                 total += GENERAL_REG_FEE; // +$895
+                // if user is a student, fee is $495
             } else if (studentButton.isSelected()) {
                 total += STUDENT_REG_FEE; // +$495
             }
@@ -103,18 +109,18 @@ public class RegistrationSystem extends Application {
             if (dinnerCheckBox.isSelected()) {
                 total += DINNER_FEE; // // +$30
             }
-            // add workshop fees if selected
-            if (eCommerceCheckBox.isSelected()) {
-                total += WORKSHOP_ECOM_FEE; // +$295
-            }
-            if (webCheckBox.isSelected()) {
-                total += WORKSHOP_WEB_FEE; // +$295
-            }
-            if (javaCheckBox.isSelected()) {
-                total += WORKSHOP_ADV_JAVA_FEE; // +$395
-            }
-            if (securityCheckBox.isSelected()) {
-                total += WORKSHOP_NET_SEC_FEE; // +$395
+            // handle multiple workshop selections
+            for (String selectedWorkshop : workshopsListView.getSelectionModel().getSelectedItems()) {
+                // add workshop fees if selected
+                if (selectedWorkshop.contains("E-commerce")) {
+                    total += WORKSHOP_ECOM_FEE; // +$295
+                } else if (selectedWorkshop.contains("Web")) {
+                    total += WORKSHOP_WEB_FEE; // +$295
+                } else if (selectedWorkshop.contains("Java")) {
+                    total += WORKSHOP_ADV_JAVA_FEE; // +$395
+                } else if (selectedWorkshop.contains("Security")) {
+                    total += WORKSHOP_NET_SEC_FEE; // +$395
+                }
             }
             // update result label
             resultLabel.setText(String.format("Total: $%.2f", total));
