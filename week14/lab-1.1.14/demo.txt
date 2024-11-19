@@ -1,0 +1,2 @@
+This file will be read by my program, then converted to all 
+uppercase if done correctly and stored in another file.
