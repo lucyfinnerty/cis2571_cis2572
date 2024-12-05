@@ -1,3 +1,8 @@
+// Name: Lucy Finnerty
+// Date: 12/5/24
+// Purpose: This is an abstract class representing a Book. It contains two fields, a title and a price.
+// It also provides accessor methods for title/price and an abstract method to set the price that must be
+// implements by subclasses.
 public abstract class Book {
     private String title; // title of book
     protected double price; // price of book
@@ -11,14 +16,14 @@ public abstract class Book {
     }
 
     /*
-     * get method for title
+     * accessor method for title field
      */
     public String getTitle() {
         return title;
     }
 
      /*
-      * get method for price
+      * accessor method for price field
       */
     public double getPrice() {
         return price;

@@ -1,3 +1,7 @@
+// Name: Lucy Finnerty
+// Date: 12/5/24
+// Purpose: A JavaFX application that creates and displays an array of 10 books (Fiction and NonFiction).
+// The book details (title and price) are displayed in a graphical interface using a ListView.
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -24,9 +28,8 @@ public class BookArray extends Application {
 
         // add book details to the ListView
         for (Book book : books) {
-            bookListView.getItems().add("Title: " + book.getTitle() + ", Price: $" + book.getPrice());
+            bookListView.getItems().add("Title: " + book.getTitle() + " - Price: $" + book.getPrice());
         }
-
         // create a VBox layout and add the ListView
         VBox layout = new VBox(bookListView);
 
@@ -39,6 +42,6 @@ public class BookArray extends Application {
         primaryStage.show();
     }
     public static void main(String[] args) {
-        launch(args); // Launch the JavaFX application
+        launch(args); // launch the JavaFX application
     }
 }
