@@ -12,16 +12,16 @@ public class BookArray extends Application {
     public void start(Stage primaryStage) {
         // create an array of books
         Book[] books = new Book[10];
-        books[0] = new Fiction("Harry Potter");
-        books[1] = new NonFiction("Sapiens");
-        books[2] = new Fiction("The Hobbit");
-        books[3] = new NonFiction("Educated");
-        books[4] = new Fiction("1984");
-        books[5] = new NonFiction("The Immortal Life of Henrietta Lacks");
-        books[6] = new Fiction("The Great Gatsby");
-        books[7] = new NonFiction("Unbroken");
-        books[8] = new Fiction("To Kill a Mockingbird");
-        books[9] = new NonFiction("The Wright Brothers");
+        books[0] = new Fiction("Fiction Book 1");
+        books[1] = new NonFiction("NonFiction Book 1");
+        books[2] = new Fiction("Fiction Book 2");
+        books[3] = new NonFiction("NonFiction Book 2");
+        books[4] = new Fiction("Fiction Book 3");
+        books[5] = new NonFiction("NonFiction Book 3");
+        books[6] = new Fiction("Fiction Book 4");
+        books[7] = new NonFiction("NonFiction Book 4");
+        books[8] = new Fiction("Fiction Book 5");
+        books[9] = new NonFiction("NonFiction Book 5");
 
         // create a ListView to display book details
         ListView<String> bookListView = new ListView<>();
