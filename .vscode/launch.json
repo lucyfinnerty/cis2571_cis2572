@@ -15,6 +15,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DemoRunner",
+            "request": "launch",
+            "mainClass": "DemoRunner",
+            "projectName": "cis2571_1a774fb5"
+        },
+        {
+            "type": "java",
             "name": "Launch Checkerboard",
             "request": "launch",
             "mainClass": "Checkerboard",
