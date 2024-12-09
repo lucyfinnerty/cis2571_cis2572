@@ -55,7 +55,10 @@ public class BookFP {
             return false;
         }
         BookFP other = (BookFP) obj;
-        return title.equals(other.title) && authorFirstName.equals(other.authorFirstName) && authorLastName.equals(other.authorLastName) && isbn.equals(other.isbn);
+        return title.equals(other.title) && 
+        authorFirstName.equals(other.authorFirstName) && 
+        authorLastName.equals(other.authorLastName) && 
+        isbn.equals(other.isbn);
     }
     /**
      * Book-title, Author First Name, Author Last Name, ISBN

@@ -6,9 +6,11 @@ public class BookManager {
     private BookFP[] books;
     private static final String FILE_NAME = "week16/final-proj/Books.csv";
 
-    public BookManager() {
-        //this.books = books; 
-        books = new BookFP[100];
+    /**
+     * 
+     */
+    public BookManager() { 
+        books = new BookFP[0];
         load();
     }
     /*
@@ -17,11 +19,10 @@ public class BookManager {
      * If file does not exist, create an empty array and continue
      */
     public void load() {
-        books = new BookFP[100];
-        int count = 0;
+        books = new BookFP[0];
 
         try(Scanner scanner = new Scanner(new File(FILE_NAME))) {
-            while(scanner.hasNextLine() && count < 100) {
+            while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(",");
                 if(parts.length == 4) {
@@ -30,8 +31,7 @@ public class BookManager {
                     String authorLastName = parts[2].trim();
                     String isbn = parts[3].trim();
                     // create new Book instance and add it to array
-                    books[count] = new BookFP(title, authorFirstName, authorLastName, isbn);
-                    count++;
+                    add(new BookFP(title, authorFirstName, authorLastName, isbn));
                 } else {
                     System.out.println("Invalid line format: " + line);
                 }
@@ -39,9 +39,6 @@ public class BookManager {
         } catch (Exception e) {
             System.out.println("File does not exist. Created an empty book array.");
         }
-        BookFP[] resizedBooks = new BookFP[count];
-        System.arraycopy(books, 0, resizedBooks, 0, count);
-        books = resizedBooks;
     }
     /*
      * Loop through array
@@ -55,15 +52,15 @@ public class BookManager {
             return;
         }
         try(PrintWriter writer = new PrintWriter(FILE_NAME)) {
-            for(int i=0; i < books.length; i++) {
-                if(books[i] != null) {
-                    writer.println(books[i].toString());
+            for (BookFP book : books) {
+                if (book != null) {
+                    writer.println(book.toString());
                 }
             }
             System.out.println("Books saved successfully to " + FILE_NAME);
         } catch (Exception e) {
             System.out.println("Error: Cannot save book to file.");
-        }   
+        }
     }
     /*
      * Given a book instance, loop through array of book instances.
@@ -74,8 +71,8 @@ public class BookManager {
         if (book == null) {
             return false; // no duplicates if the array or book is null
         }
-        for(int i=0; i < books.length; i++) {
-            if(books[i] != null && books[i].equals(book)) {
+        for (BookFP b : books) {
+            if (b != null && b.equals(book)) {
                 return true; // found a duplicate
             }
         }
@@ -89,17 +86,18 @@ public class BookManager {
         if(isDuplicate(book)) { // true, is a duplicate
             return false;
         }
-        // check for a free slot
+        // resize array if full or initially empty
+        if (books.length == 0 || books[books.length - 1] != null) {
+            books = Arrays.copyOf(books, books.length + 10); // Grow by 10
+        }
+        // add book to the first null slot
         for (int i = 0; i < books.length; i++) {
             if (books[i] == null) {
-                books[i] = book; // Add the new book
+                books[i] = book;
                 return true;
             }
         }
-        // If no space is available, resize the array and add the book
-        books = Arrays.copyOf(books, books.length + 10); // Increase the size by 10
-        books[books.length - 10] = book; // Add the new book in the last available spot
-        return true;
+        return false;
     }
     /*
      * The method runs over the array of book instances and invokes the toString method for each object and adds the returned String to an array.
@@ -107,21 +105,17 @@ public class BookManager {
      * This method is used for displaying the report – list of book information – in the GUI
      */
     public String[] getReportList() {
-        // First, count how many non-null books are in the array
         int count = 0;
-        for (int i = 0; i < books.length; i++) {
-            if (books[i] != null) {
+        for (BookFP book : books) {
+            if (book != null) {
                 count++;
             }
         }
-        // create a new String array of the appropriate size
         String[] reportList = new String[count];
-
-        // fill the array with the toString representation of each book
         int index = 0;
-        for (int i = 0; i < books.length; i++) {
-            if (books[i] != null) {
-                reportList[index] = books[i].toString();
+        for (BookFP book : books) {
+            if (book != null) {
+                reportList[index] = book.toString();
                 index++;
             }
         }
