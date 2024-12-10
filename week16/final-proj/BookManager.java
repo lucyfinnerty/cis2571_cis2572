@@ -1,17 +1,20 @@
+// Name: Lucy Finnerty
+// Date: 12/8/24
+// Purpose: Manages a collection of books, handling file loading, saving, duplicates, and reporting.
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.io.File;
 public class BookManager {
-    private BookFP[] books;
-    private static final String FILE_NAME = "week16/final-proj/Books.csv";
+    private Book[] books; // array to store Book instances
+    private static final String FILE_NAME = "week16/final-proj/Books.csv"; // file path where books are stored
 
     /**
-     * 
+     * constructor initializes the books array and loads data from the file.
      */
     public BookManager() { 
-        books = new BookFP[0];
-        load();
+        books = new Book[0]; // start with empty array
+        load(); // load books from the file
     }
     /*
      * Read the file book.csv.
@@ -19,24 +22,24 @@ public class BookManager {
      * If file does not exist, create an empty array and continue
      */
     public void load() {
-        books = new BookFP[0];
+        books = new Book[0];
 
         try(Scanner scanner = new Scanner(new File(FILE_NAME))) {
-            while(scanner.hasNextLine()) {
+            while(scanner.hasNextLine()) { // loop through each line in the file
                 String line = scanner.nextLine();
-                String[] parts = line.split(",");
-                if(parts.length == 4) {
+                String[] parts = line.split(","); // split line into parts using comma as delimiter
+                if(parts.length == 4) { // check if the line has all required fields
                     String title = parts[0].trim();
                     String authorFirstName = parts[1].trim();
                     String authorLastName = parts[2].trim();
                     String isbn = parts[3].trim();
                     // create new Book instance and add it to array
-                    add(new BookFP(title, authorFirstName, authorLastName, isbn));
-                } else {
+                    add(new Book(title, authorFirstName, authorLastName, isbn));
+                } else { // print a warning if the line format is invalid
                     System.out.println("Invalid line format: " + line);
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e) { // if it doesn't exist, initialize an empty array and tell user
             System.out.println("File does not exist. Created an empty book array.");
         }
     }
@@ -47,18 +50,18 @@ public class BookManager {
      * Note: Each entry in the file should be on a new line
      */
     public void save() {
-        if (books == null || books.length == 0) {
-            System.out.println("No books to save.");
+        if (books == null || books.length == 0) { // if there are no books to save
+            System.out.println("No books to save."); // display message
             return;
         }
         try(PrintWriter writer = new PrintWriter(FILE_NAME)) {
-            for (BookFP book : books) {
-                if (book != null) {
+            for (Book book : books) { // iterate through books
+                if (book != null) { // if an entry is NOT null, write its details
                     writer.println(book.toString());
                 }
-            }
+            } // notify user is was successfully saved
             System.out.println("Books saved successfully to " + FILE_NAME);
-        } catch (Exception e) {
+        } catch (Exception e) { // if it fails to save, display message
             System.out.println("Error: Cannot save book to file.");
         }
     }
@@ -67,12 +70,12 @@ public class BookManager {
      * For each instance, use the equals method to check if the book instance is similar to the entry in the array.
      * If similar to any entry, return true, else false
      */
-    public boolean isDuplicate(BookFP book) {
+    public boolean isDuplicate(Book book) {
         if (book == null) {
-            return false; // no duplicates if the array or book is null
+            return false; // no duplicates if the book is null
         }
-        for (BookFP b : books) {
-            if (b != null && b.equals(book)) {
+        for (Book b : books) { // iterate through array
+            if (b != null && b.equals(book)) { // use equals method to check for duplicates
                 return true; // found a duplicate
             }
         }
@@ -82,22 +85,14 @@ public class BookManager {
      * Given a book instance, use the isDuplicate method to check if it is a duplicate of an entry
      * in the array. If it is not a duplicate, add it to the array and returns true, else return false.
      */
-    public boolean add(BookFP book) {
-        if(isDuplicate(book)) { // true, is a duplicate
-            return false;
+    public boolean add(Book book) {
+        if(isDuplicate(book)) { // check if book is a duplicate
+            return false; // do not add
         }
-        // resize array if full or initially empty
-        if (books.length == 0 || books[books.length - 1] != null) {
-            books = Arrays.copyOf(books, books.length + 10); // Grow by 10
-        }
-        // add book to the first null slot
-        for (int i = 0; i < books.length; i++) {
-            if (books[i] == null) {
-                books[i] = book;
-                return true;
-            }
-        }
-        return false;
+        // resize the array to accommodate the new book
+        books = Arrays.copyOf(books, books.length + 1);
+        books[books.length - 1] = book; // add the new book at the last position
+        return true; // book added successfully
     }
     /*
      * The method runs over the array of book instances and invokes the toString method for each object and adds the returned String to an array.
@@ -106,19 +101,21 @@ public class BookManager {
      */
     public String[] getReportList() {
         int count = 0;
-        for (BookFP book : books) {
-            if (book != null) {
-                count++;
+        // count number of non-null books
+        for (Book book : books) {
+            if (book != null) { // if book is NOT null
+                count++; // increment count
             }
         }
-        String[] reportList = new String[count];
+        String[] reportList = new String[count]; // array for the report
         int index = 0;
-        for (BookFP book : books) {
-            if (book != null) {
-                reportList[index] = book.toString();
-                index++;
+        // populate the report list with toString output of each book
+        for (Book book : books) {
+            if (book != null) { // if book is NOT null
+                reportList[index] = book.toString(); // add its details to report list
+                index++; // increment index
             }
         }
-        return reportList;
+        return reportList; // return generated report list
     }
 }

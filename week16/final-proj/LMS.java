@@ -1,3 +1,8 @@
+// Name: Lucy Finnerty
+// Date: 12/8/24
+// Purpose: This class creates an instance of the BookManager and displays the main GUI at launch. It will 
+// populate the top-portion list view with the information (string array) returned from the BookManager instance.
+// And a user will be able to add books to the list view
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -14,16 +19,18 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 public class LMS extends Application {
-    private static BookManager bookManager;
-    private static ListView<String> bookListView;
-    private static ObservableList<String> listModel;
+    private static BookManager bookManager; // instance of BookManager to manage bok data
+    private static ListView<String> bookListView; // new list view to display list of books in GUI
 
     public static void main(String[] args) {
         // initialize BookManager instance
         bookManager = new BookManager();
         launch(args); // launch application
     }
-
+    /**
+     * This method creates the GUI window with the list view of books and allows the user
+     * to add more books through text fields and an add button.
+     */
     @Override
     public void start(Stage primaryStage) {
         // set up the main window
@@ -37,8 +44,6 @@ public class LMS extends Application {
         grid.setPadding(new Insets(20)); // padding around the grid
 
         // create the ListView to display books
-        listModel = FXCollections.observableArrayList();
-        bookListView = new ListView<>(listModel);
         grid.add(bookListView, 0, 0, 2, 1);
 
         // populate the List View with data from BookManager
@@ -69,7 +74,7 @@ public class LMS extends Application {
         Button addButton = new Button("ADD");
         grid.add(addButton, 1, 5);
 
-        // action for the Add button
+        // action for the add button
         addButton.setOnAction(e -> {
             String title = titleField.getText().trim();
             String firstName = firstNameField.getText().trim();
@@ -82,7 +87,7 @@ public class LMS extends Application {
                 return;
             }
             // create new Book instance and try to add it
-            BookFP newBook = new BookFP(title, firstName, lastName, isbnText);
+            Book newBook = new Book(title, firstName, lastName, isbnText);
             boolean added = bookManager.add(newBook);
 
             if (added) { // save and update list view if the book is successfully added
@@ -101,18 +106,20 @@ public class LMS extends Application {
      * helper method to update the list view with the latest book data
      */
     private static void updateListView() {
-        listModel.clear();
-        String[] report = bookManager.getReportList();
-        listModel.addAll(report);
+        bookListView.getItems().clear(); // clear all items currently in the list view
+        String[] report = bookManager.getReportList(); // get the latest report from BookManager
+        for (String entry : report) {
+            bookListView.getItems().add(entry); // add each entry to the list view
+        }
     }
     /*
      * method to show alert dialog
      */
     private void showAlert(AlertType alertType, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        Alert alert = new Alert(alertType); // new alert dialog
+        alert.setTitle("Error"); // title of window
+        alert.setHeaderText(null); // remove header text
+        alert.setContentText(message); // set message content
+        alert.showAndWait(); // display alert and wait for user to acknowledge it
     }
 }
