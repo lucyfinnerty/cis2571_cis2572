@@ -13,8 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.ListView;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
@@ -44,6 +42,7 @@ public class LMS extends Application {
         grid.setPadding(new Insets(20)); // padding around the grid
 
         // create the ListView to display books
+        bookListView = new ListView<>();
         grid.add(bookListView, 0, 0, 2, 1);
 
         // populate the List View with data from BookManager
