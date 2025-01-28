@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.io.File;
 public class BookManager {
     private Book[] books; // array to store Book instances
-    private static final String FILE_NAME = "week16/final-proj/Books.csv"; // file path where books are stored
+    private static final String FILE_NAME = "week16/Books.csv"; // file path where books are stored
 
     /**
      * constructor initializes the books array and loads data from the file.

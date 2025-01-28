@@ -3,11 +3,12 @@
     "C:/Users/lucil/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib/*.jar"
 ],
 "java.project.sourcePaths": [
-    "week16/final-proj",
-    "week15/lab-1.1.15",
-    "week13/lab-1.2.13",
-    "week13/lab-1.1.13",
-    "week12/lab-1.1.12",
-    "week15/lab-1.2.15"
+    "cis2572/week_one",
+    "cis2571/week16",
+    "cis2571/week15/lab-1.1.15",
+    "cis2571/week13/lab-1.2.13",
+    "cis2571/week13/lab-1.1.13",
+    "cis2571/week12/lab-1.1.12",
+    "cis2571/week15/lab-1.2.15"
 ]
 }
