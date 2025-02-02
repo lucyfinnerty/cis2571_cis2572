@@ -13,6 +13,13 @@
     ]*/
     "version": "0.2.0",
     "configurations": [
+        /*{
+            "type": "java",
+            "name": "QuartsToGallons",
+            "request": "launch",
+            "mainClass": "QuartsToGallons",
+            "projectName": "cis2571_cis2572_614c4c21"
+        },*/
         {
             "type": "java",
             "name": "DemoRunner",
