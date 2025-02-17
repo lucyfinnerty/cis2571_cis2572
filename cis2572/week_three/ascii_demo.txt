@@ -1,0 +1,2 @@
+Hello World!
+This is a test file that ensures the program can accurately count the amount of characters.
