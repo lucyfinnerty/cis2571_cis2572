@@ -15,6 +15,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MaxElement",
+            "request": "launch",
+            "mainClass": "MaxElement",
+            "projectName": "cis2571_cis2572_614c4c21"
+        },
+        {
+            "type": "java",
+            "name": "NumFilesInDir",
+            "request": "launch",
+            "mainClass": "NumFilesInDir",
+            "projectName": "cis2571_cis2572_614c4c21"
+        },
+        {
+            "type": "java",
             "name": "DemoRunner",
             "request": "launch",
             "mainClass": "DemoRunner",
