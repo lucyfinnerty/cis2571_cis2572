@@ -15,6 +15,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LinkedListIterator",
+            "request": "launch",
+            "mainClass": "LinkedListIterator",
+            "projectName": "cis2571_cis2572_614c4c21"
+        },
+        {
+            "type": "java",
+            "name": "PriorityQueues",
+            "request": "launch",
+            "mainClass": "PriorityQueues",
+            "projectName": "cis2571_cis2572_614c4c21"
+        },
+        {
+            "type": "java",
             "name": "MaxElement",
             "request": "launch",
             "mainClass": "MaxElement",
