@@ -110,8 +110,7 @@ public class BubbleSort extends Application{
             gc.fillText("Sorting Complete!", canvas.getWidth() / 2 - 50, 20); // display message
         }
     }
-
     public static void main(String[] args) {
-        launch(args);
+        launch(args); // launch application
     }
 }
