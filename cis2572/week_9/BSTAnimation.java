@@ -1,6 +1,6 @@
 /*
  * Author: Lucy Finnerty
- * 
+ * This program demonstrates a BST data structure using buttons to insert, delete, and search elements in the tree.
  */
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
