@@ -152,6 +152,13 @@
             "request": "launch",
             "mainClass": "BSTAnimation",
             "vmArgs": "--module-path C:/jfx-23.0.2/javafx-sdk-23.0.2/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "ConnectedCircles",
+            "request": "launch",
+            "mainClass": "ConnectedCircles",
+            "vmArgs": "--module-path C:/jfx-23.0.2/javafx-sdk-23.0.2/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
